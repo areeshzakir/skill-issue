@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #1C1917;
+  }
+
+  ::selection {
+    background-color: #B45309;
+    color: #FAF7F2;
+  }
+}
+
+@layer components {
+  .category-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium font-body tracking-wide uppercase;
+  }
+
+  .category-badge-engineering {
+    @apply bg-blue-50 text-blue-800 border border-blue-200;
+  }
+
+  .category-badge-design {
+    @apply bg-rose-50 text-rose-800 border border-rose-200;
+  }
+
+  .category-badge-devops {
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-200;
+  }
+
+  .category-badge-marketing {
+    @apply bg-amber-50 text-amber-800 border border-amber-200;
+  }
+
+  .category-badge-productivity {
+    @apply bg-violet-50 text-violet-800 border border-violet-200;
+  }
+
+  .category-badge-research {
+    @apply bg-cyan-50 text-cyan-800 border border-cyan-200;
+  }
+
+  .category-badge-meta {
+    @apply bg-stone-100 text-stone-700 border border-stone-300;
+  }
+
+  .accent-line-engineering {
+    @apply border-l-[3px] border-l-category-engineering;
+  }
+
+  .accent-line-design {
+    @apply border-l-[3px] border-l-category-design;
+  }
+
+  .accent-line-devops {
+    @apply border-l-[3px] border-l-category-devops;
+  }
+
+  .accent-line-marketing {
+    @apply border-l-[3px] border-l-category-marketing;
+  }
+
+  .accent-line-productivity {
+    @apply border-l-[3px] border-l-category-productivity;
+  }
+
+  .accent-line-research {
+    @apply border-l-[3px] border-l-category-research;
+  }
+
+  .accent-line-meta {
+    @apply border-l-[3px] border-l-category-meta;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #D4CCC0 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #D4CCC0;
+    border-radius: 3px;
+  }
+}
