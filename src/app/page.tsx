@@ -1,7 +1,21 @@
+import { getAllSkills, getCategories, getCreators, CATEGORY_META } from "@/lib/skills";
+import { LandingClient } from "./landing-client";
+
 export default function Home() {
+  const skills = getAllSkills();
+  const categories = getCategories();
+  const creators = getCreators();
+
+  const featured = skills.slice(0, 8);
+
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="font-display text-5xl">skill-issue</h1>
-    </main>
+    <LandingClient
+      skills={skills}
+      categories={categories}
+      creators={creators}
+      featured={featured}
+      totalSkills={skills.length}
+      categoryMeta={CATEGORY_META}
+    />
   );
 }
