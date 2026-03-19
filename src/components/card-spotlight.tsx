@@ -28,7 +28,7 @@ export function CardSpotlight({ children, className = "" }: CardSpotlightProps) 
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden rounded-xl border border-white/[0.08] bg-[var(--card)] ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] ${className}`}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
     >

@@ -95,7 +95,7 @@ export function CreatorViewClient({
               <span className="text-sm font-mono px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
                 {creator.skillCount} skills
               </span>
-              <span className="text-sm font-mono px-3 py-1 rounded-full bg-white/[0.06] text-[var(--muted)]">
+              <span className="text-sm font-mono px-3 py-1 rounded-full bg-[var(--subtle-bg)] text-[var(--muted)]">
                 {creator.categories.length} {creator.categories.length === 1 ? "category" : "categories"}
               </span>
             </div>
@@ -114,7 +114,7 @@ export function CreatorViewClient({
                     className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border transition-all"
                     style={{
                       backgroundColor: isActive ? `${color}20` : "transparent",
-                      borderColor: isActive ? `${color}40` : "rgba(255,255,255,0.08)",
+                      borderColor: isActive ? `${color}40` : "var(--border)",
                       color: isActive ? color : "var(--muted)",
                     }}
                   >
@@ -136,7 +136,7 @@ export function CreatorViewClient({
               placeholder={`Filter ${creator.name}'s skills...`}
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
-              className="text-sm bg-[var(--card)] border border-white/[0.08] rounded-lg px-3 py-2 outline-none focus:border-[var(--color-accent)]/50 transition-colors w-full max-w-xs"
+              className="text-sm bg-[var(--card)] border border-[var(--border)] rounded-lg px-3 py-2 outline-none focus:border-[var(--color-accent)]/50 transition-colors w-full max-w-xs"
             />
           </motion.div>
 
@@ -177,7 +177,7 @@ export function CreatorViewClient({
                         {skill.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="text-xs px-1.5 py-0.5 rounded bg-white/[0.04] text-[var(--muted)]"
+                            className="text-xs px-1.5 py-0.5 rounded bg-[var(--subtle-bg)] text-[var(--muted)]"
                           >
                             {tag}
                           </span>

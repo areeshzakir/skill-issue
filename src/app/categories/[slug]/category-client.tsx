@@ -83,7 +83,7 @@ export function CategoryViewClient({
                 placeholder={`Filter ${name.toLowerCase()} skills...`}
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="text-sm bg-[var(--card)] border border-white/[0.08] rounded-lg px-3 py-2 outline-none focus:border-[var(--color-accent)]/50 transition-colors flex-1 max-w-xs"
+                className="text-sm bg-[var(--card)] border border-[var(--border)] rounded-lg px-3 py-2 outline-none focus:border-[var(--color-accent)]/50 transition-colors flex-1 max-w-xs"
               />
             </div>
           </motion.div>
@@ -112,7 +112,7 @@ export function CategoryViewClient({
                       {skill.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs px-1.5 py-0.5 rounded bg-white/[0.04] text-[var(--muted)]"
+                          className="text-xs px-1.5 py-0.5 rounded bg-[var(--subtle-bg)] text-[var(--muted)]"
                         >
                           {tag}
                         </span>

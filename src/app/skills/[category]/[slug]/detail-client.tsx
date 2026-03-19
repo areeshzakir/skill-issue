@@ -86,7 +86,7 @@ export function SkillDetailClient({
                   {skill.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2.5 py-1 rounded-full bg-white/[0.06] text-[var(--muted)] border border-white/[0.08]"
+                      className="text-xs px-2.5 py-1 rounded-full bg-[var(--subtle-bg)] text-[var(--muted)] border border-[var(--border)]"
                     >
                       {tag}
                     </span>
@@ -107,7 +107,7 @@ export function SkillDetailClient({
                     {copied ? "Copied!" : "Copy"}
                   </button>
                 </div>
-                <pre className="bg-[var(--card)] border border-white/[0.08] rounded-xl p-4 overflow-x-auto">
+                <pre className="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 overflow-x-auto">
                   <code className="font-mono text-sm text-[var(--foreground)]">
                     {installCommand}
                   </code>
@@ -136,7 +136,7 @@ export function SkillDetailClient({
             >
               <div className="sticky top-24 space-y-6">
                 {/* Metadata card */}
-                <div className="p-5 rounded-xl bg-[var(--card)] border border-white/[0.08]">
+                <div className="p-5 rounded-xl bg-[var(--card)] border border-[var(--border)]">
                   <h3 className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-4">
                     Details
                   </h3>
@@ -188,7 +188,7 @@ export function SkillDetailClient({
                         <Link
                           key={r.slug}
                           href={`/skills/${r.category}/${r.slug}`}
-                          className="block p-3 rounded-lg border border-white/[0.06] hover:bg-white/[0.02] transition-colors"
+                          className="block p-3 rounded-lg border border-[var(--border)] hover:bg-[var(--subtle-bg)] transition-colors"
                         >
                           <h4 className="font-mono text-xs font-medium mb-1">
                             {r.title}

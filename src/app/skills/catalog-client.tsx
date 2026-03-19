@@ -130,7 +130,7 @@ export function SkillsCatalogClient({
                   placeholder="Filter skills..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-full px-3 py-2 text-sm bg-[var(--card)] border border-white/[0.08] rounded-lg outline-none focus:border-[var(--color-accent)]/50 transition-colors"
+                  className="w-full px-3 py-2 text-sm bg-[var(--card)] border border-[var(--border)] rounded-lg outline-none focus:border-[var(--color-accent)]/50 transition-colors"
                 />
               </div>
 
@@ -151,7 +151,7 @@ export function SkillsCatalogClient({
                       className={`flex items-center justify-between w-full px-3 py-2 text-sm rounded-lg transition-colors ${
                         selectedCategory === cat.slug
                           ? "bg-[var(--color-accent)]/10 text-[var(--color-accent)]"
-                          : "hover:bg-white/[0.04] text-[var(--muted)]"
+                          : "hover:bg-[var(--subtle-bg)] text-[var(--muted)]"
                       }`}
                     >
                       <span>{cat.name}</span>
@@ -178,7 +178,7 @@ export function SkillsCatalogClient({
                       className={`flex items-center justify-between w-full px-3 py-2 text-sm rounded-lg transition-colors ${
                         selectedCreator === creator.slug
                           ? "bg-[var(--color-accent)]/10 text-[var(--color-accent)]"
-                          : "hover:bg-white/[0.04] text-[var(--muted)]"
+                          : "hover:bg-[var(--subtle-bg)] text-[var(--muted)]"
                       }`}
                     >
                       <span>{creator.name}</span>
@@ -197,7 +197,7 @@ export function SkillsCatalogClient({
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortBy)}
-                    className="text-sm bg-[var(--card)] border border-white/[0.08] rounded-lg px-3 py-2 outline-none"
+                    className="text-sm bg-[var(--card)] border border-[var(--border)] rounded-lg px-3 py-2 outline-none"
                   >
                     <option value="name">Sort by name</option>
                     <option value="category">Sort by category</option>
@@ -205,13 +205,13 @@ export function SkillsCatalogClient({
                   </select>
                 </div>
 
-                <div className="flex items-center gap-1 bg-[var(--card)] border border-white/[0.08] rounded-lg p-1">
+                <div className="flex items-center gap-1 bg-[var(--card)] border border-[var(--border)] rounded-lg p-1">
                   <button
                     onClick={() => setViewMode("grid")}
                     className={`p-1.5 rounded ${
                       viewMode === "grid"
-                        ? "bg-white/[0.08]"
-                        : "hover:bg-white/[0.04]"
+                        ? "bg-[var(--subtle-bg)]"
+                        : "hover:bg-[var(--subtle-bg)]"
                     }`}
                     aria-label="Grid view"
                   >
@@ -233,8 +233,8 @@ export function SkillsCatalogClient({
                     onClick={() => setViewMode("list")}
                     className={`p-1.5 rounded ${
                       viewMode === "list"
-                        ? "bg-white/[0.08]"
-                        : "hover:bg-white/[0.04]"
+                        ? "bg-[var(--subtle-bg)]"
+                        : "hover:bg-[var(--subtle-bg)]"
                     }`}
                     aria-label="List view"
                   >
@@ -338,7 +338,7 @@ export function SkillsCatalogClient({
                       >
                         <Link
                           href={`/skills/${skill.category}/${skill.slug}`}
-                          className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.06] hover:bg-white/[0.02] transition-colors"
+                          className="flex items-center gap-4 p-4 rounded-xl border border-[var(--border)] hover:bg-[var(--subtle-bg)] transition-colors"
                         >
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-3">

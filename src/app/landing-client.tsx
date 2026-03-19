@@ -121,7 +121,7 @@ export function LandingClient({
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="flex-1 bg-transparent outline-none text-[var(--foreground)] placeholder:text-[var(--muted)]"
                     />
-                    <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-[var(--muted)] bg-white/[0.06] rounded border border-white/[0.08]">
+                    <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-[var(--muted)] bg-[var(--subtle-bg)] rounded border border-[var(--border)]">
                       ⌘K
                     </kbd>
                   </div>
@@ -316,7 +316,7 @@ export function LandingClient({
         </section>
 
         {/* Footer */}
-        <footer className="py-12 px-6 border-t border-white/[0.06]">
+        <footer className="py-12 px-6 border-t border-[var(--border)]">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <span className="font-mono text-sm text-[var(--muted)]">

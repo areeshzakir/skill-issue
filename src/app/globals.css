@@ -39,6 +39,9 @@
     --muted: var(--color-text-muted);
     --card: var(--color-bg-secondary);
     --accent: var(--color-accent);
+    --border: rgba(0, 0, 0, 0.08);
+    --subtle-bg: rgba(0, 0, 0, 0.03);
+    --text-secondary: var(--color-text-secondary);
   }
 
   .dark {
@@ -46,6 +49,9 @@
     --foreground: #fafafa;
     --muted: var(--color-text-secondary);
     --card: var(--color-bg-dark-card);
+    --border: rgba(255, 255, 255, 0.08);
+    --subtle-bg: rgba(255, 255, 255, 0.04);
+    --text-secondary: #a3a3a3;
   }
 
   body {
