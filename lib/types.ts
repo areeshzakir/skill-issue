@@ -81,6 +81,24 @@ export const CATEGORY_META: Record<
   },
 };
 
+export function getRelatedSkills(
+  skill: Skill,
+  allSkills: Skill[],
+  limit = 3
+): Skill[] {
+  return allSkills
+    .filter((s) => s.id !== skill.id)
+    .map((s) => {
+      const tagOverlap = skill.tags.filter((t) => s.tags.includes(t)).length;
+      const categoryMatch = s.category === skill.category ? 2 : 0;
+      return { skill: s, score: tagOverlap + categoryMatch };
+    })
+    .filter((s) => s.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((s) => s.skill);
+}
+
 export const PLATFORM_META: Record<Platform, { label: string; short: string }> =
   {
     "claude-code": { label: "Claude Code", short: "CC" },

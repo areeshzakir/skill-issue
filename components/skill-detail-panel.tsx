@@ -2,14 +2,22 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Skill, CATEGORY_META, PLATFORM_META } from "@/lib/types";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import { Skill, CATEGORY_META, PLATFORM_META, getRelatedSkills } from "@/lib/types";
+import { skills as allSkills } from "@/lib/skills-data";
 
 export function SkillDetailPanel({
   skill,
   onClose,
+  onTagClick,
+  onSelectSkill,
 }: {
   skill: Skill | null;
   onClose: () => void;
+  onTagClick?: (tag: string) => void;
+  onSelectSkill?: (skill: Skill) => void;
 }) {
   useEffect(() => {
     if (!skill) return;
@@ -106,10 +114,10 @@ export function SkillDetailPanel({
               </div>
 
               {/* Description */}
-              <div className="mb-8">
-                <p className="text-ink-light leading-relaxed text-[15px]">
+              <div className="mb-8 prose-skill">
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
                   {skill.longDescription || skill.description}
-                </p>
+                </Markdown>
               </div>
 
               {/* Platforms */}
@@ -136,12 +144,13 @@ export function SkillDetailPanel({
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {skill.tags.map((tag) => (
-                    <span
+                    <button
                       key={tag}
-                      className="text-sm text-ink-muted bg-parchment-200 px-3 py-1"
+                      onClick={() => onTagClick?.(tag)}
+                      className="text-sm text-ink-muted bg-parchment-200 px-3 py-1 hover:bg-parchment-300 hover:text-ink transition-colors cursor-pointer"
                     >
                       {tag}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -194,6 +203,40 @@ export function SkillDetailPanel({
                   </svg>
                 </a>
               )}
+
+              {/* Related Skills */}
+              {(() => {
+                const related = getRelatedSkills(skill, allSkills);
+                if (related.length === 0) return null;
+                return (
+                  <div className="border-t border-parchment-200 pt-6 mt-8">
+                    <h4 className="text-xs font-medium text-ink-faint uppercase tracking-wider mb-4">
+                      Related Skills
+                    </h4>
+                    <div className="flex flex-col gap-2">
+                      {related.map((r) => (
+                        <button
+                          key={r.id}
+                          onClick={() => onSelectSkill?.(r)}
+                          className="flex items-start gap-3 p-3 text-left bg-parchment-100 hover:bg-parchment-200 transition-colors group/related"
+                        >
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-ink group-hover/related:text-accent transition-colors">
+                              {r.name}
+                            </p>
+                            <p className="text-xs text-ink-muted line-clamp-2 mt-0.5">
+                              {r.description}
+                            </p>
+                          </div>
+                          <span className={`category-badge category-badge-${r.category} shrink-0 mt-0.5`}>
+                            {CATEGORY_META[r.category].label}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           </motion.aside>
         </>

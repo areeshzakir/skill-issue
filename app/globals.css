@@ -82,6 +82,74 @@
   }
 }
 
+@layer components {
+  .prose-skill {
+    @apply text-ink-light leading-relaxed text-[15px];
+  }
+
+  .prose-skill p {
+    @apply mb-3 last:mb-0;
+  }
+
+  .prose-skill h1,
+  .prose-skill h2,
+  .prose-skill h3 {
+    @apply text-ink font-medium mt-5 mb-2;
+  }
+
+  .prose-skill h1 { @apply text-lg; }
+  .prose-skill h2 { @apply text-base; }
+  .prose-skill h3 { @apply text-sm; }
+
+  .prose-skill ul,
+  .prose-skill ol {
+    @apply pl-5 mb-3;
+  }
+
+  .prose-skill ul { @apply list-disc; }
+  .prose-skill ol { @apply list-decimal; }
+
+  .prose-skill li {
+    @apply mb-1;
+  }
+
+  .prose-skill code {
+    @apply bg-parchment-200 px-1.5 py-0.5 text-[13px] font-mono text-ink-muted;
+  }
+
+  .prose-skill pre {
+    @apply bg-parchment-200 p-4 mb-3 overflow-x-auto text-[13px];
+  }
+
+  .prose-skill pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose-skill a {
+    @apply text-accent hover:text-accent-hover underline;
+  }
+
+  .prose-skill blockquote {
+    @apply border-l-2 border-parchment-400 pl-4 italic text-ink-muted mb-3;
+  }
+
+  .prose-skill table {
+    @apply w-full mb-3 text-sm;
+  }
+
+  .prose-skill th {
+    @apply text-left font-medium text-ink border-b border-parchment-300 pb-2;
+  }
+
+  .prose-skill td {
+    @apply border-b border-parchment-200 py-1.5;
+  }
+
+  .prose-skill strong {
+    @apply text-ink font-medium;
+  }
+}
+
 @layer utilities {
   .scrollbar-thin {
     scrollbar-width: thin;
