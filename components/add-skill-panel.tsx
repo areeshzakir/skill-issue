@@ -9,6 +9,7 @@ interface ParsedSkill {
   category: string;
   tags: string[];
   creator: string;
+  sourceUrl?: string;
 }
 
 export function AddSkillPanel({
@@ -187,11 +188,29 @@ export function AddSkillPanel({
                       </div>
 
                       <motion.button
-                        onClick={() => setSubmitted(true)}
+                        onClick={() => {
+                          if (!parsed) return;
+                          const title = encodeURIComponent(`[Skill Submission] ${parsed.name}`);
+                          const body = encodeURIComponent(
+                            `## Skill Submission\n\n` +
+                            `**Name:** ${parsed.name}\n` +
+                            `**Category:** ${parsed.category}\n` +
+                            `**Creator:** ${parsed.creator}\n` +
+                            `**Tags:** ${parsed.tags.join(", ")}\n` +
+                            `**Source URL:** ${parsed.sourceUrl || url}\n\n` +
+                            `### Description\n\n${parsed.description}\n\n` +
+                            `---\n*Submitted via skill-issue dashboard*`
+                          );
+                          window.open(
+                            `https://github.com/areeshzakir/skill-issue/issues/new?title=${title}&body=${body}&labels=skill-submission`,
+                            "_blank"
+                          );
+                          setSubmitted(true);
+                        }}
                         className="w-full bg-accent text-white py-3 text-sm font-medium hover:bg-accent-hover transition-colors"
                         whileTap={{ scale: 0.98 }}
                       >
-                        Add to Catalog
+                        Submit via GitHub
                       </motion.button>
                     </motion.div>
                   )}
@@ -215,11 +234,11 @@ export function AddSkillPanel({
                     </svg>
                   </div>
                   <h3 className="font-display text-xl text-ink mb-2">
-                    Skill Submitted
+                    Issue Created
                   </h3>
                   <p className="text-sm text-ink-muted">
-                    Thanks for contributing! The skill will appear in the catalog
-                    shortly.
+                    A GitHub issue has been opened with your skill details.
+                    A maintainer will review and add it to the catalog.
                   </p>
                 </motion.div>
               )}
