@@ -14,7 +14,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex", "gemini-cli"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/test-driven-development",
     featured: true,
     createdAt: "2025-11-15",
   },
@@ -31,7 +31,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex", "gemini-cli"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/systematic-debugging",
     featured: true,
     createdAt: "2025-11-15",
   },
@@ -48,7 +48,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor", "windsurf"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/frontend-design",
     featured: true,
     createdAt: "2025-12-01",
   },
@@ -63,7 +63,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/requesting-code-review",
     createdAt: "2025-11-15",
   },
   {
@@ -77,7 +77,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex", "gemini-cli"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/brainstorming",
     createdAt: "2025-11-15",
   },
   {
@@ -91,7 +91,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex", "gemini-cli"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/writing-plans",
     createdAt: "2025-11-15",
   },
   {
@@ -105,7 +105,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/using-git-worktrees",
     createdAt: "2025-12-10",
   },
   {
@@ -116,10 +116,10 @@ export const skills: Skill[] = [
       "Enhances UI features with purposeful animations, micro-interactions, and motion effects that improve usability and delight.",
     category: "design",
     tags: ["animation", "motion", "ux", "framer-motion"],
-    creator: "Superpowers",
+    creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/animate",
     createdAt: "2025-12-01",
   },
   {
@@ -130,10 +130,10 @@ export const skills: Skill[] = [
       "Final quality pass before shipping. Fixes alignment, spacing, consistency, and micro-details that separate good from great.",
     category: "design",
     tags: ["quality", "detail", "finishing", "review"],
-    creator: "Superpowers",
+    creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/polish",
     createdAt: "2025-12-01",
   },
   {
@@ -164,7 +164,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/claude-api",
     createdAt: "2026-01-10",
   },
   {
@@ -178,7 +178,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/audit",
     createdAt: "2025-12-15",
   },
   {
@@ -192,7 +192,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-google",
     createdAt: "2026-01-05",
   },
   {
@@ -206,7 +206,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-meta",
     createdAt: "2026-01-05",
   },
   {
@@ -220,7 +220,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/skill-creator",
     createdAt: "2026-02-01",
   },
   {
@@ -318,7 +318,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code", "codex", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/simplify",
     createdAt: "2025-11-15",
   },
   {
@@ -332,7 +332,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-landing",
     createdAt: "2026-01-10",
   },
   {
@@ -346,7 +346,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/dispatching-parallel-agents",
     createdAt: "2025-12-20",
   },
   {
@@ -360,7 +360,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/adapt",
     createdAt: "2026-01-15",
   },
   {
@@ -374,7 +374,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/bolder",
     createdAt: "2026-01-15",
   },
   {
@@ -388,7 +388,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/clarify",
     createdAt: "2026-01-15",
   },
   {
@@ -402,7 +402,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/colorize",
     createdAt: "2026-01-15",
   },
   {
@@ -416,7 +416,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/critique",
     createdAt: "2026-01-15",
   },
   {
@@ -430,7 +430,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/delight",
     createdAt: "2026-01-15",
   },
   {
@@ -444,7 +444,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/distill",
     createdAt: "2026-01-15",
   },
   {
@@ -458,7 +458,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/extract",
     createdAt: "2026-01-15",
   },
   {
@@ -472,7 +472,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/harden",
     createdAt: "2026-01-15",
   },
   {
@@ -486,7 +486,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/normalize",
     createdAt: "2026-01-15",
   },
   {
@@ -500,7 +500,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/onboard",
     createdAt: "2026-01-15",
   },
   {
@@ -514,7 +514,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/optimize",
     createdAt: "2026-01-15",
   },
   {
@@ -528,7 +528,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code", "cursor"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/quieter",
     createdAt: "2026-01-15",
   },
   {
@@ -542,7 +542,7 @@ export const skills: Skill[] = [
     creator: "Impeccable",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/teach-impeccable",
     createdAt: "2026-01-15",
   },
   {
@@ -556,7 +556,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads",
     createdAt: "2026-01-05",
   },
   {
@@ -570,7 +570,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-audit",
     createdAt: "2026-01-05",
   },
   {
@@ -584,7 +584,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-budget",
     createdAt: "2026-01-05",
   },
   {
@@ -598,7 +598,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-competitor",
     createdAt: "2026-01-05",
   },
   {
@@ -612,7 +612,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-creative",
     createdAt: "2026-01-05",
   },
   {
@@ -626,7 +626,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-linkedin",
     createdAt: "2026-01-05",
   },
   {
@@ -640,7 +640,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-microsoft",
     createdAt: "2026-01-05",
   },
   {
@@ -654,7 +654,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-plan",
     createdAt: "2026-01-05",
   },
   {
@@ -668,7 +668,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-tiktok",
     createdAt: "2026-01-05",
   },
   {
@@ -682,7 +682,7 @@ export const skills: Skill[] = [
     creator: "Superpowers",
     organization: "Claude Plugins",
     platforms: ["claude-code"],
-    sourceUrl: "https://github.com/nichochar/superpowers",
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-youtube",
     createdAt: "2026-01-05",
   },
   {
@@ -696,5 +696,31 @@ export const skills: Skill[] = [
     creator: "Community",
     platforms: ["claude-code"],
     createdAt: "2026-02-01",
+  },
+  {
+    id: "ads-landing",
+    name: "Landing Page Auditor",
+    slug: "landing-page-auditor",
+    description:
+      "Landing page quality assessment for paid advertising campaigns. Evaluates message match, page speed, mobile experience, trust signals, form optimization, and conversion rate potential.",
+    category: "marketing",
+    tags: ["landing-page", "conversion", "audit", "advertising"],
+    creator: "Superpowers",
+    organization: "Claude Plugins",
+    platforms: ["claude-code"],
+    sourceUrl: "https://github.com/nichochar/superpowers/tree/main/skills/ads-landing",
+    createdAt: "2026-01-10",
+  },
+  {
+    id: "nps-analysis",
+    name: "NPS Sentiment Analysis",
+    slug: "nps-sentiment-analysis",
+    description:
+      "Run weekly NPS detractor sentiment analysis. Fetches live data from published Google Sheets CSVs, filters detractors, categorizes problems by theme, and generates a leadership report.",
+    category: "research",
+    tags: ["nps", "sentiment", "analytics", "reporting"],
+    creator: "Custom",
+    platforms: ["claude-code"],
+    createdAt: "2026-03-01",
   },
 ];

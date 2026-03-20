@@ -162,7 +162,7 @@ export function AddSkillPanel({
 
                       <div className="border border-parchment-300 p-5 mb-6">
                         <div className="mb-2">
-                          <span className="category-badge category-badge-engineering">
+                          <span className={`category-badge category-badge-${parsed.category}`}>
                             {parsed.category}
                           </span>
                         </div>
