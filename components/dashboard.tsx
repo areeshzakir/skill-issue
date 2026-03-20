@@ -8,6 +8,7 @@ import { Header } from "@/components/header";
 import { SkillCard } from "@/components/skill-card";
 import { SkillDetailPanel } from "@/components/skill-detail-panel";
 import { AddSkillPanel } from "@/components/add-skill-panel";
+import { CommandPalette } from "@/components/command-palette";
 
 type SortMode = "name" | "recent" | "category";
 type ViewMode = "grid" | "list";
@@ -360,6 +361,7 @@ export function Dashboard() {
         open={addPanelOpen}
         onClose={() => setAddPanelOpen(false)}
       />
+      <CommandPalette onSelectSkill={(skill) => setSelectedSkill(skill)} />
     </div>
   );
 }
