@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import { Skill, CATEGORY_META, PLATFORM_META, getRelatedSkills } from "@/lib/types";
 import { skills as allSkills } from "@/lib/skills-data";
+import { getInstallCommands } from "@/lib/install-commands";
 
 export function SkillDetailPanel({
   skill,
@@ -181,28 +182,72 @@ export function SkillDetailPanel({
                 </dl>
               </div>
 
-              {/* Source link */}
-              {skill.sourceUrl && (
-                <a
-                  href={skill.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover transition-colors group"
-                >
-                  View Source
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    className="transition-transform group-hover:translate-x-0.5"
+              {/* Install Commands */}
+              {(() => {
+                const cmds = getInstallCommands(skill);
+                if (cmds.length === 0) return null;
+                return (
+                  <div className="mb-8">
+                    <h4 className="text-xs font-medium text-ink-faint uppercase tracking-wider mb-3">
+                      Installation
+                    </h4>
+                    <div className="flex flex-col gap-2">
+                      {cmds.map((cmd) => (
+                        <div key={cmd.platform}>
+                          <p className="text-[11px] text-ink-faint mb-1">{cmd.platform}</p>
+                          <div className="flex items-center gap-2 bg-parchment-100 border border-parchment-300 p-2.5 font-mono text-sm text-ink">
+                            <code className="flex-1 overflow-x-auto text-xs">{cmd.command}</code>
+                            <button
+                              onClick={() => navigator.clipboard.writeText(cmd.command)}
+                              className="shrink-0 text-ink-faint hover:text-ink transition-colors"
+                              title="Copy to clipboard"
+                            >
+                              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                <rect x="5" y="5" width="9" height="9" rx="1" />
+                                <path d="M11 5V3a1 1 0 00-1-1H3a1 1 0 00-1 1v7a1 1 0 001 1h2" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Source & full page links */}
+              <div className="flex items-center gap-4">
+                {skill.sourceUrl && (
+                  <a
+                    href={skill.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover transition-colors group"
                   >
+                    View Source
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      className="transition-transform group-hover:translate-x-0.5"
+                    >
+                      <path d="M5 2h7v7M12 2L2 12" />
+                    </svg>
+                  </a>
+                )}
+                <a
+                  href={`/skills/${skill.slug}`}
+                  className="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-ink transition-colors"
+                >
+                  Full page
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
                     <path d="M5 2h7v7M12 2L2 12" />
                   </svg>
                 </a>
-              )}
+              </div>
 
               {/* Related Skills */}
               {(() => {

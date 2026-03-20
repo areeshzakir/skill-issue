@@ -18,6 +18,12 @@ export function Header({ onAddSkill }: { onAddSkill: () => void }) {
 
           <div className="flex items-center gap-4">
             <a
+              href="/stacks"
+              className="text-ink-muted hover:text-ink transition-colors text-sm hidden sm:inline"
+            >
+              Stacks
+            </a>
+            <a
               href="https://github.com/areeshzakir/skill-issue"
               target="_blank"
               rel="noopener noreferrer"
