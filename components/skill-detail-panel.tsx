@@ -2,14 +2,19 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 import { Skill, CATEGORY_META, PLATFORM_META } from "@/lib/types";
 
 export function SkillDetailPanel({
   skill,
   onClose,
+  onTagClick,
 }: {
   skill: Skill | null;
   onClose: () => void;
+  onTagClick?: (tag: string) => void;
 }) {
   useEffect(() => {
     if (!skill) return;
@@ -106,10 +111,10 @@ export function SkillDetailPanel({
               </div>
 
               {/* Description */}
-              <div className="mb-8">
-                <p className="text-ink-light leading-relaxed text-[15px]">
+              <div className="mb-8 prose-skill">
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
                   {skill.longDescription || skill.description}
-                </p>
+                </Markdown>
               </div>
 
               {/* Platforms */}
@@ -136,12 +141,13 @@ export function SkillDetailPanel({
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {skill.tags.map((tag) => (
-                    <span
+                    <button
                       key={tag}
-                      className="text-sm text-ink-muted bg-parchment-200 px-3 py-1"
+                      onClick={() => onTagClick?.(tag)}
+                      className="text-sm text-ink-muted bg-parchment-200 px-3 py-1 hover:bg-parchment-300 hover:text-ink transition-colors cursor-pointer"
                     >
                       {tag}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
