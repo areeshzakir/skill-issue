@@ -10,6 +10,7 @@ import { SkillCard } from "@/components/skill-card";
 import { SkillDetailPanel } from "@/components/skill-detail-panel";
 import { AddSkillPanel } from "@/components/add-skill-panel";
 import { CommandPalette } from "@/components/command-palette";
+import { ComparePanel } from "@/components/compare-panel";
 
 type SortMode = "name" | "recent" | "category";
 type ViewMode = "grid" | "list";
@@ -49,6 +50,25 @@ export function Dashboard() {
 
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [addPanelOpen, setAddPanelOpen] = useState(false);
+  const [compareIds, setCompareIds] = useState<Set<string>>(new Set());
+  const [compareOpen, setCompareOpen] = useState(false);
+
+  const toggleCompare = useCallback((skill: Skill) => {
+    setCompareIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(skill.id)) {
+        next.delete(skill.id);
+      } else if (next.size < 3) {
+        next.add(skill.id);
+      }
+      return next;
+    });
+  }, []);
+
+  const compareSkills = useMemo(
+    () => allSkills.filter((s) => compareIds.has(s.id)),
+    [compareIds]
+  );
 
   const categories = Object.entries(CATEGORY_META) as [Category, typeof CATEGORY_META[Category]][];
   const platforms = Object.entries(PLATFORM_META) as [Platform, typeof PLATFORM_META[Platform]][];
@@ -398,6 +418,8 @@ export function Dashboard() {
                     featured={i === 0 && !!skill.featured}
                     index={i}
                     onClick={() => setSelectedSkill(skill)}
+                    comparing={compareIds.has(skill.id)}
+                    onCompare={() => toggleCompare(skill)}
                   />
                 ))}
               </motion.div>
@@ -409,11 +431,35 @@ export function Dashboard() {
                     skill={skill}
                     index={i}
                     onClick={() => setSelectedSkill(skill)}
+                    comparing={compareIds.has(skill.id)}
+                    onCompare={() => toggleCompare(skill)}
                   />
                 ))}
               </motion.div>
             )}
           </AnimatePresence>
+        ) : activeCategory !== "all" && !search && !activeTag ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="py-20 text-center"
+          >
+            <p className="font-display text-2xl text-ink-faint mb-2">
+              Coming soon
+            </p>
+            <p className="text-sm text-ink-muted mb-6 max-w-md mx-auto">
+              No skills in {CATEGORY_META[activeCategory].label} yet. Be the first to contribute one.
+            </p>
+            <button
+              onClick={() => setAddPanelOpen(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-ink text-parchment-100 hover:bg-ink/90 transition-colors"
+            >
+              Submit the first skill
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M5 2h7v7M12 2L2 12" />
+              </svg>
+            </button>
+          </motion.div>
         ) : (
           <motion.div
             initial={{ opacity: 0 }}
@@ -458,12 +504,59 @@ export function Dashboard() {
         skill={selectedSkill}
         onClose={() => setSelectedSkill(null)}
         onTagClick={handleTagClick}
+        onSelectSkill={(skill) => setSelectedSkill(skill)}
       />
       <AddSkillPanel
         open={addPanelOpen}
         onClose={() => setAddPanelOpen(false)}
       />
       <CommandPalette onSelectSkill={(skill) => setSelectedSkill(skill)} />
+
+      {/* Floating Compare Bar */}
+      <AnimatePresence>
+        {compareIds.size > 0 && !compareOpen && (
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-ink text-parchment-100 shadow-lg px-5 py-3 flex items-center gap-4"
+          >
+            <span className="text-sm">
+              {compareIds.size} skill{compareIds.size !== 1 ? "s" : ""} selected
+            </span>
+            <button
+              onClick={() => setCompareOpen(true)}
+              disabled={compareIds.size < 2}
+              className="text-sm font-medium bg-white/10 hover:bg-white/20 disabled:opacity-40 disabled:cursor-not-allowed px-3 py-1.5 transition-colors"
+            >
+              Compare
+            </button>
+            <button
+              onClick={() => setCompareIds(new Set())}
+              className="text-sm text-parchment-100/60 hover:text-parchment-100 transition-colors"
+            >
+              Clear
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Compare Panel */}
+      {compareOpen && (
+        <ComparePanel
+          skills={compareSkills}
+          onClose={() => setCompareOpen(false)}
+          onRemove={(id) => {
+            setCompareIds((prev) => {
+              const next = new Set(prev);
+              next.delete(id);
+              if (next.size < 2) setCompareOpen(false);
+              return next;
+            });
+          }}
+        />
+      )}
     </div>
   );
 }

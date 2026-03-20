@@ -9,11 +9,15 @@ export function SkillCard({
   featured = false,
   index = 0,
   onClick,
+  comparing = false,
+  onCompare,
 }: {
   skill: Skill;
   featured?: boolean;
   index?: number;
   onClick: () => void;
+  comparing?: boolean;
+  onCompare?: () => void;
 }) {
   const category = CATEGORY_META[skill.category];
 
@@ -111,8 +115,39 @@ export function SkillCard({
         </div>
       </div>
 
+      {/* Compare toggle */}
+      {onCompare && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onCompare();
+          }}
+          className={clsx(
+            "absolute top-3 right-3 w-6 h-6 flex items-center justify-center border transition-all",
+            comparing
+              ? "bg-ink border-ink text-parchment-100"
+              : "bg-white border-parchment-300 text-transparent opacity-0 group-hover:opacity-100"
+          )}
+          aria-label={comparing ? `Remove ${skill.name} from comparison` : `Add ${skill.name} to comparison`}
+          title="Compare"
+        >
+          {comparing ? (
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M1.5 5.5L4 8L8.5 2" />
+            </svg>
+          ) : (
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M2 6h8M6 2v8" />
+            </svg>
+          )}
+        </button>
+      )}
+
       {/* Hover indicator */}
-      <div className="absolute inset-0 border border-transparent group-hover:border-parchment-400 transition-colors pointer-events-none" />
+      <div className={clsx(
+        "absolute inset-0 border transition-colors pointer-events-none",
+        comparing ? "border-ink" : "border-transparent group-hover:border-parchment-400"
+      )} />
     </motion.article>
   );
 }
