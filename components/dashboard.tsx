@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { skills as allSkills } from "@/lib/skills-data";
 import { Skill, Category, CATEGORY_META, Platform, PLATFORM_META } from "@/lib/types";
@@ -13,17 +14,90 @@ import { CommandPalette } from "@/components/command-palette";
 type SortMode = "name" | "recent" | "category";
 type ViewMode = "grid" | "list";
 
+const VALID_CATEGORIES = new Set<string>(Object.keys(CATEGORY_META));
+const VALID_PLATFORMS = new Set<string>(Object.keys(PLATFORM_META));
+const VALID_SORTS = new Set<string>(["name", "recent", "category"]);
+const VALID_VIEWS = new Set<string>(["grid", "list"]);
+
+function parseCategory(v: string | null): Category | "all" {
+  return v && VALID_CATEGORIES.has(v) ? (v as Category) : "all";
+}
+
+function parsePlatform(v: string | null): Platform | "all" {
+  return v && VALID_PLATFORMS.has(v) ? (v as Platform) : "all";
+}
+
+function parseSort(v: string | null): SortMode {
+  return v && VALID_SORTS.has(v) ? (v as SortMode) : "recent";
+}
+
+function parseView(v: string | null): ViewMode {
+  return v && VALID_VIEWS.has(v) ? (v as ViewMode) : "grid";
+}
+
 export function Dashboard() {
-  const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState<Category | "all">("all");
-  const [activePlatform, setActivePlatform] = useState<Platform | "all">("all");
-  const [sort, setSort] = useState<SortMode>("recent");
-  const [view, setView] = useState<ViewMode>("grid");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  // Read initial state from URL
+  const search = searchParams.get("q") ?? "";
+  const activeCategory = parseCategory(searchParams.get("category"));
+  const activePlatform = parsePlatform(searchParams.get("platform"));
+  const sort = parseSort(searchParams.get("sort"));
+  const view = parseView(searchParams.get("view"));
+  const activeTag = searchParams.get("tag") ?? "";
+
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [addPanelOpen, setAddPanelOpen] = useState(false);
 
   const categories = Object.entries(CATEGORY_META) as [Category, typeof CATEGORY_META[Category]][];
   const platforms = Object.entries(PLATFORM_META) as [Platform, typeof PLATFORM_META[Platform]][];
+
+  // Update URL search params without full navigation
+  const updateParams = useCallback(
+    (updates: Record<string, string>) => {
+      const params = new URLSearchParams(searchParams.toString());
+      for (const [key, value] of Object.entries(updates)) {
+        // Remove param if it's the default value
+        const isDefault =
+          (key === "q" && value === "") ||
+          (key === "category" && value === "all") ||
+          (key === "platform" && value === "all") ||
+          (key === "sort" && value === "recent") ||
+          (key === "view" && value === "grid") ||
+          (key === "tag" && value === "");
+        if (isDefault) {
+          params.delete(key);
+        } else {
+          params.set(key, value);
+        }
+      }
+      const qs = params.toString();
+      router.replace(qs ? `/?${qs}` : "/", { scroll: false });
+    },
+    [searchParams, router]
+  );
+
+  const setSearch = useCallback((v: string) => updateParams({ q: v }), [updateParams]);
+  const setActiveCategory = useCallback(
+    (v: Category | "all") => updateParams({ category: v }),
+    [updateParams]
+  );
+  const setActivePlatform = useCallback(
+    (v: Platform | "all") => updateParams({ platform: v }),
+    [updateParams]
+  );
+  const setSort = useCallback((v: SortMode) => updateParams({ sort: v }), [updateParams]);
+  const setView = useCallback((v: ViewMode) => updateParams({ view: v }), [updateParams]);
+  const setActiveTag = useCallback((v: string) => updateParams({ tag: v }), [updateParams]);
+
+  const handleTagClick = useCallback(
+    (tag: string) => {
+      setSelectedSkill(null);
+      updateParams({ tag, q: "" });
+    },
+    [updateParams]
+  );
 
   const filtered = useMemo(() => {
     let result = [...allSkills];
@@ -36,6 +110,12 @@ export function Dashboard() {
           s.description.toLowerCase().includes(q) ||
           s.tags.some((t) => t.toLowerCase().includes(q)) ||
           s.creator.toLowerCase().includes(q)
+      );
+    }
+
+    if (activeTag) {
+      result = result.filter((s) =>
+        s.tags.some((t) => t.toLowerCase() === activeTag.toLowerCase())
       );
     }
 
@@ -63,7 +143,7 @@ export function Dashboard() {
     }
 
     return result;
-  }, [search, activeCategory, activePlatform, sort]);
+  }, [search, activeTag, activeCategory, activePlatform, sort]);
 
   // Sort featured to top, but don't separate them
   const ordered = useMemo(() => {
@@ -81,6 +161,8 @@ export function Dashboard() {
       creators: uniqueCreators.size,
     };
   }, []);
+
+  const hasActiveFilters = search || activeCategory !== "all" || activePlatform !== "all" || activeTag;
 
   return (
     <div className="min-h-screen bg-parchment-100">
@@ -167,6 +249,25 @@ export function Dashboard() {
             creators
           </span>
         </motion.div>
+
+        {/* Active tag filter */}
+        {activeTag && (
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-sm text-ink-muted">Filtered by tag:</span>
+            <span className="inline-flex items-center gap-1.5 text-sm bg-parchment-200 text-ink px-3 py-1">
+              {activeTag}
+              <button
+                onClick={() => setActiveTag("")}
+                className="text-ink-faint hover:text-ink ml-1"
+                aria-label={`Remove ${activeTag} filter`}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M3 3l6 6M9 3L3 9" />
+                </svg>
+              </button>
+            </span>
+          </div>
+        )}
 
         {/* Filters Row */}
         <motion.div
@@ -271,7 +372,7 @@ export function Dashboard() {
         </motion.div>
 
         {/* Results count */}
-        {(search || activeCategory !== "all" || activePlatform !== "all") && (
+        {hasActiveFilters && (
           <p className="text-sm text-ink-faint mb-6">
             {filtered.length} skill{filtered.length !== 1 ? "s" : ""} found
             {search && (
@@ -356,6 +457,7 @@ export function Dashboard() {
       <SkillDetailPanel
         skill={selectedSkill}
         onClose={() => setSelectedSkill(null)}
+        onTagClick={handleTagClick}
       />
       <AddSkillPanel
         open={addPanelOpen}
